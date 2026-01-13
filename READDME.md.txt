@@ -1,0 +1,32 @@
+# Dual Display Interface: LCD & 7-Segment (Assembly)
+
+This project demonstrates how to drive two different types of display units simultaneously using the PIC16F877A microcontroller without external drivers. The system displays a specific number sequence (Student ID) on both a 2x16 LCD and a 7-Segment Display.
+
+##  Project Goal
+To master data output techniques using **Lookup Tables** for 7-Segment displays and **ASCII Data Transmission** for LCD modules.
+
+##  Technical Details
+- **Microcontroller:** PIC16F877A
+- **Display 1:** 2x16 Character LCD (4-bit mode logic simulated in 8-bit connection)
+- **Display 2:** Common Anode/Cathode 7-Segment Display
+- **Clock Source:** Internal Logic
+
+##  Pin Connections
+| Component | PIC Port | Function |
+| :--- | :--- | :--- |
+| **7-Segment** | **PORTB** | Output (Segment Data via Lookup Table) |
+| **LCD Data** | **PORTD** | 8-bit Data Bus |
+| **LCD Control** | **PORTC** | RC0 (RS), RC1 (Enable) |
+
+##  Code Logic
+1.  **Lookup Table (LOOK_UP):** A subroutine is implemented using `ADDWF PCL, F` to convert decimal numbers into 7-segment bitmasks.
+2.  **LCD Driver:**
+    -   Manual initialization sequence sent to LCD Command Register (`0x38`, `0x0C`, `0x01`).
+    -   **RS Pin** toggling implemented to switch between Command Mode and Data Mode.
+3.  **Sequence Loop:** The code sequentially sends digits to the 7-Segment display while keeping the full number visible on the LCD.
+
+##  Simulation (Proteus)
+![Display Simulation](lcd_disply.png)
+## 🛠 Tools Used
+- **Language:** Assembly (MPASM)
+- **Simulation:** Proteus ISIS 8
