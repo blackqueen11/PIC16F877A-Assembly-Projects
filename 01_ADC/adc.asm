@@ -7,28 +7,28 @@ gecikme1  equ 0x20
        ORG 0X00
        GOTO Ana_Prog
 Ana_Prog
-;ADIM1- BURADA ADCON1 VE TRIS KULLANARAK ANALOG PÝNLERÝN GÝRÝÞÝNÝ SEÇTÝK
+;ADIM1- BURADA ADCON1 VE TRIS KULLANARAK ANALOG PÄ°NLERÄ°N GÄ°RÄ°ÅžÄ°NÄ° SEÃ‡TÄ°K
     bsf    STATUS, RP0   ;tris bank1 de
-    movlw  d'255'        ;8 tane 1 demek ,yani porta giriþ
+    movlw  d'255'        ;8 tane 1 demek ,yani porta giriÅŸ
     movwf  TRISA
     clrf   TRISB 
     movlw  b'00001110'    ;AN0 pini analog 
     movwf  ADCON1
     bcf    STATUS, RP0
     clrf   PORTB
-;ADIM2-3 ADCON0 ÝLE KANAL , SAAT SEÇÝMÝ ve ADON=1
+;ADIM2-3 ADCON0 Ä°LE KANAL , SAAT SEÃ‡Ä°MÄ° ve ADON=1
     movlw  0x81
-    movwf  ADCON0        ;ADON=1 ve osilatör 1:32
-;ADIM4 - DÖNÜÞÜMÜ BAÞLAT
+    movwf  ADCON0        ;ADON=1 ve osilatÃ¶r 1:32
+;ADIM4 - DÃ–NÃœÅžÃœMÃœ BAÅžLAT
 Dongu
     call   GECIKME
     bsf    ADCON0,2
-;ADIM5-6 - BÝTMESÝNÝ BEKLE VE SONUCU OKU
+;ADIM5-6 - BÄ°TMESÄ°NÄ° BEKLE VE SONUCU OKU
 Bekle
     btfsc  ADCON0,2
     goto   Bekle
     
-    movf   ADRESH,W   ;dijitale dönen bilgiyi al b portuna ver
+    movf   ADRESH,W   ;dijitale dÃ¶nen bilgiyi al b portuna ver
     BANKSEL PORTB
     movwf  PORTB
   
