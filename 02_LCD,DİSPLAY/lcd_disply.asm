@@ -22,7 +22,7 @@ START
      call DSPLAY       ; show the number on display
      
 LAST_LOOP
-     goto LAST_LOOP    ; ›ts for lcd to stay here
+     goto LAST_LOOP    ; √ùts for lcd to stay here
 
 
 LOOK_UP
@@ -42,35 +42,35 @@ DSPLAY
      movlw .2
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG ; need more time to see the number on display
+     call WA√ùT_LONG ; need more time to see the number on display
      movlw .3
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .8
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .8
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .2
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .0
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .0
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .2
      call LOOK_UP
      movwf PORTB
-     call WA›T_LONG
+     call WA√ùT_LONG
      movlw .1
      call LOOK_UP
      movwf PORTB
@@ -92,7 +92,7 @@ LCD_START
 
      movlw 0x01    ; clean the screen
      call SEND_COMMND
-     call WA›T_LONG ; need more time for cleaning
+     call WA√ùT_LONG ; need more time for cleaning
      return
 SEND_DATA
      bsf  PORTC,0     ; RS on data mode
@@ -129,7 +129,7 @@ L1   decfsz COUNTER1,F
      goto L1
      return
 
-WA›T_LONG
+WA√ùT_LONG
      movlw d'200'
      movwf COUNTER1
 INTERNAL_LOOP
